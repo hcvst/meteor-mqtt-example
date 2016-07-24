@@ -12,6 +12,49 @@ Template.msgs.helpers({
   }
 });
 
+Template.barChart.onRendered(function(){
+  console.log("Barchart onRendered");
+  var svg = d3.select("#chart")
+      .append("svg")
+      .attr("width", 640)
+      .attr("height", 200);
+
+  Deps.autorun(function(){
+
+    var dataset = PseudoMessagesCollection.find({}).fetch();
+
+    var bars = svg.selectAll(".bar")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("class", function(d, i) {return "bar"})
+        .attr("x", function(d, i) {return 30*i;})
+        .attr("y", 0)
+        .attr("width", 28)
+        .attr("height", function(d, i) {return d.message;});
+
+    //
+    //
+    ////select elements that correspond to documents
+    //var bars = svg.selectAll("rect")
+    //    .data(dataset, key); //bind dataset to objects using key function
+    //
+    ////handle new documents via enter()
+    //bars.enter()
+    //    .append("rect")
+    //...
+    //
+    ////handle updates to documents via transition()
+    //bars.transition()
+    //...
+    //
+    ////handle removed documents via exit()
+    //bars.exit()
+    //...
+    //.remove();
+  });
+});
+
 //Template.hello.events({
 //  'click button'(event, instance) {
 //    // increment the counter when button is clicked

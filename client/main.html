@@ -4,11 +4,18 @@
 
 <body>
 <h1>PySense - Meteor MQTT Example</h1>
+{{> barChart}}
+
 {{> msgs}}
 </body>
 
+<template name="barChart">
+    <h2>Sample D3.js visualization</h2>
+    <div id="chart"></div>
+</template>
+
 <template name="msgs">
-    MQTT Messages
+    <h2>Raw MQTT Messages</h2>
     <ol>
         {{#each messages}}
             <li>{{message}}</li>
