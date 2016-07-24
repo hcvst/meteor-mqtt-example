@@ -1,0 +1,17 @@
+<head>
+    <title>PySense</title>
+</head>
+
+<body>
+<h1>PySense - Meteor MQTT Example</h1>
+{{> msgs}}
+</body>
+
+<template name="msgs">
+    MQTT Messages
+    <ol>
+        {{#each messages}}
+            <li>{{message}}</li>
+        {{/each}}
+    </ol>
+</template>
